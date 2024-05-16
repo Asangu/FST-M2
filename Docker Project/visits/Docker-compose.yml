@@ -1,0 +1,9 @@
+version: '3' 
+services:
+    redis-server:
+        image: 'redis'
+    node-app:
+        build: ./
+        image: "asang2024/visits"
+        ports:
+            - "8081:8081"

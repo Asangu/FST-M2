@@ -1,0 +1,21 @@
+---
+- host: local
+  become: true
+  tasks:
+    - name: Install required componants
+      apt:
+        name:
+          - git
+          - maven
+          - openjdk-17-jdk
+        state: present
+
+    - name: clone maven repo
+      git:
+        repo: https://github.com/training-support/FST_JUnit_Project.git
+        dest: /home/madhusudan/FST_JUnit_Project
+
+    - name: Run maven test
+      command: mvn clean test
+      args:
+        chdir: /home/madhusudan/FST_JUnit_Project
